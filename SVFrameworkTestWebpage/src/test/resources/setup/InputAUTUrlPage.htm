@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AUT URL Page</title>
+</head>
+<body>
+<h1>URL of the Application Under Test</h1>
+<p> Enter the URL of the Application Under Test here : </p>
+<form> 
+<input type="text" id="AutUrl"> 
+<input type="submit" onClick="saveUrlAsFile();"/>
+</form>
+
+<script type="text/javascript">
+function saveUrlAsFile() {
+	var urlToBeSaved = document.getElementById("AutUrl").value;
+	var textToSaveAsBlob = new Blob([urlToBeSaved], {type:"text/plain"});
+	var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    	var fileNameToSaveAs = "auturl.txt"; 
+	
+	var downloadLink = document.createElement("a");
+    	downloadLink.download = fileNameToSaveAs;
+    	downloadLink.innerHTML = "Download File";
+    	downloadLink.href = textToSaveAsURL;
+    	downloadLink.onclick = destroyClickedElement;
+    	downloadLink.style.display = "none";
+    	document.body.appendChild(downloadLink);
+ 
+    	downloadLink.click();
+}
+ 
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+</script>
+</body>
+</html>
