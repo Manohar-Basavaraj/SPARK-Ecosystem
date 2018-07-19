@@ -20,7 +20,7 @@ import validators.WebpageSpellChecker;
 public class TestingPageValidator {
 
 	protected static WebDriver driver;
-	private static String autUrl = Utility.extractAutUrl(System.getProperty("user.home")+"\\Downloads\\auturl.txt");
+	private static String autUrl = Utility.extractAutUrl("C:\\Users\\manohar.b\\Downloads\\auturl.txt");
 	private Map<String, String> misspelledSuggestions;
 
 	@BeforeClass
